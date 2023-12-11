@@ -1,113 +1,67 @@
 ---
-layout: index
-img: projects/tfoe.jpg
+title: Technology
+layout: default
 ---
 
-<div id="slider">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1262.05 1397.1">
-    <defs>
-      <clipPath id="clippath">
-        <path d="M656.75 474.86h605.31v922.24H656.75z" class="cls-1" />
-      </clipPath>
-      <clipPath id="clippath-1">
-        <path d="M68.01 0h1176.64v1388.35H68.01z" class="cls-1" />
-      </clipPath>
-      <clipPath id="clippath-2">
-        <path d="M0 108.77h1074.2v1260.37H0z" class="cls-1" />
-      </clipPath>
-      <style>
-        .cls-1 {
-          fill: none
-        }
-        .cls-4 {
-          fill: #919191
-        }
-        .cls-7 {
-          mix-blend-mode: screen
-        }
-      </style>
-    </defs>
-    <g style="isolation:isolate">
-      <path id="bg" fill="#333" d="M334.63 564.74h719.3v449.7h-719.3z" />
-      <g id="right" class="cls-7" clip-path="url(#clippath)">
-        <path d="m1086.38 533.26-425.19 754.6 340.66 107.42 84.53-862.02z" class="cls-4" />
-      </g>
-      <g id="middle" class="cls-7" clip-path="url(#clippath-1)">
-        <path d="m205.5 106.65 771.69 1278.57 263.59-202.26L205.5 106.65z" class="cls-4" />
-      </g>
-      <g id="left" class="cls-7" clip-path="url(#clippath-2)">
-        <path d="M862.66 251.74 4.02 1091.11l411.73 275.11L862.66 251.74z" class="cls-4" />
-      </g>
-    </g>
-  </svg>
-  <ul>
-    <!--Manual Loop Slides Entry-->
-    <li>
-      <label>
-        <hr>
-        <div>
-          <span>
-            Storm
-          </span>
-        </div>
-        <hr>
-      </label>
-    </li>
-    <li>
-      <label>
-        <hr>
-        <div>
-          <span>
-            THE Future Of Everything
-          </span>
-        </div>
-        <hr>
-      </label>
-    </li>
-    <li>
-      <label>
-        <hr>
-        <div>
-          <span>
-            THE WIZARDS OF AUS
-          </span>
-        </div>
-        <hr>
-      </label>
-    </li>
-    <li>
-      <label>
-        <hr>
-        <div>
-          <span>
-            REBOOTED
-          </span>
-        </div>
-        <hr>
-      </label>
-    </li>
-    <li>
-      <label>
-        <hr>
-        <div>
-          <span>
-            THE LEGEND OF BURNOUT BarRY
-          </span>
-        </div>
-        <hr>
-      </label>
-    </li>
-    <li>
-      <label>
-        <hr>
-        <div>
-          <span>
-            GOBLIN SPOON
-          </span>
-        </div>
-        <hr>
-      </label>
-    </li>
-  </ul>
-</div>
-<div id="gradient"></div>
+<section>
+    <article>
+      <p class="header-text">Constantly looking for ways to innovate, <span class="latenite">LateNite</span> is as passionate about production 
+        and post production as it is storytelling. Their pursuit of creative excellence 
+        has seen them work closely with global cinematic technology companies to craft post 
+        workflow solutions and critically celebrated software in-house.</p>
+      <ul class="projectlist-nofilter">
+        <!--Manual Loop Project Entry-->
+        <li><a href="https://brawtoolbox.io/" target="_blank"><img src="../img/tech/braw-toolbox.jpg">
+          <h4>BRAW Toolbox</h4>
+          <hr><sub>Import Blackmagic RAW files directly into Final Cut Pro</sub>
+          <hr></a>
+        </li>
+        <li><a href="https://commandpost.io/" target="_blank"><img
+              src="../img/tech/commandpost.jpg">
+            <h4>CommandPost</h4>
+            <hr><sub>Workflow Enhancements for Creatives</sub>
+            <hr>
+          </a></li>
+        <li><a href="https://gyroflowtoolbox.io/" target="_blank"><img src="../img/tech/gyroflow-toolbox.jpg">
+          <h4>Gyroflow Toolbox</h4>
+          <hr><sub>Import Gyroflow Projects into Final Cut Pro</sub>
+          <hr></a>
+        </li>
+        <li><a href="https://markertoolbox.io/" target="_blank"><img src="../img/tech/marker-toolbox.jpg">
+          <h4>Marker Toolbox</h4>
+          <hr><sub>Import Vimeo, Dropbox Replay & ChatGPT Comments into Final Cut Pro</sub>
+          <hr></a>
+        </li>
+        <li><a href="https://recalltoolbox.io/" target="_blank"><img src="../img/tech/recall-toolbox.jpg">
+          <h4>Recall Toolbox</h4>
+          <hr><sub>Final Cut Pro Pasteboard Manager</sub>
+          <hr></a>
+        </li>
+        <li><a href="https://transfertoolbox.io/" target="_blank"><img src="../img/tech/transfer-toolbox.jpg">
+          <h4>Transfer Toolbox</h4>
+          <hr><sub>Final Cut Pro Mac to iPad</sub>
+          <hr></a>
+        </li>
+        <li><a href="https://fcp.cafe/" target="_blank"><img src="../img/tech/fcp-cafe.jpg">
+          <h4>FCP Cafe</h4>
+          <hr><sub>Community for Final Cut Pro Professionals</sub>
+          <hr></a>
+        </li>
+        <li><a href="https://resolve.cafe/" target="_blank"><img src="../img/tech/resolve-cafe.jpg">
+          <h4>Resolve Cafe</h4>
+          <hr><sub>Community for DaVinci Resolve Professionals</sub>
+          <hr></a>
+        </li>
+        <li><a href="https://unreal.cafe/" target="_blank"><img src="../img/tech/unreal-cafe.png">
+          <h4>Unreal Cafe</h4>
+          <hr><sub>Community for filmmakers using Unreal Engine</sub>
+          <hr></a>
+        </li>
+        <li><a href="https://timecodetoolbox.io/" target="_blank"><img src="../img/tech/timecode-repair-toolbox.png">
+          <h4>Timecode Toolbox</h4>
+          <hr><sub>Repair Sony Timecode in Final Cut Pro</sub>
+          <hr></a>
+        </li>
+      </ul>
+    </article>
+  </section>
