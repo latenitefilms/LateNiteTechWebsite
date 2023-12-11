@@ -1,4 +1,4 @@
-name: Build & Deploy Website
+name: Build and deploy Jekyll site
 
 on:
   push:
@@ -10,40 +10,57 @@ jobs:
   jekyll:
     runs-on: ubuntu-latest
     steps:
-      - name: 📂 setup
+      - name: 📂 Setup
         uses: actions/checkout@v3
 
-      - name: 💎 setup ruby
+      - name: 💎 Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
 
-      - name: 🔨 install dependencies & build site
+      - name: 🔨 Install dependencies & build site
         uses: limjh16/jekyll-action-ts@v2
         with:
           enable_cache: true
 
-      # New step to checkout the _website branch and clear its contents
+      - name: 🔄 Check for _website branch
+        id: check-branch
+        run: |
+          if git ls-remote --heads origin _website; then
+            echo "::set-output name=exists::true"
+          else
+            echo "::set-output name=exists::false"
+          fi
+
       - name: 📂 Checkout _website branch
+        if: steps.check-branch.outputs.exists == 'true'
         uses: actions/checkout@v3
         with:
           ref: _website
           token: ${{ secrets.GITHUB_TOKEN }}
           path: _website
 
-      # New step to copy the built site to the _website branch directory
+      - name: 📂 Create and checkout _website branch
+        if: steps.check-branch.outputs.exists == 'false'
+        run: |
+          git checkout --orphan _website
+          git reset --hard
+          git commit --allow-empty -m "Initial _website branch commit"
+          git push origin _website
+          git checkout main
+          git worktree add _website _website
+
       - name: 🔄 Sync built site to _website branch
         run: |
           rsync -av --delete _site/ _website/
 
-      # New step to commit and push changes to the _website branch
       - name: 🚀 Deploy to _website branch
         run: |
           cd _website
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
-          git commit -m "Deploy Jekyll site to _website branch"
+          git commit -m "Deploy Jekyll site to _website branch" || true # this command will not fail if there's nothing to commit
           git push origin _website
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
