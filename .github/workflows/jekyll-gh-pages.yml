@@ -38,17 +38,9 @@ jobs:
         with:
           ref: _website
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0  # Ensures full history is fetched
           path: _website
         continue-on-error: true
-
-      - name: 🔄 Create _website branch if not exists
-        if: steps.checkout.outputs.ref != '_website'
-        run: |
-          git switch --orphan _website
-          git reset --hard
-          git commit --allow-empty -m "Initial _website branch commit"
-          git push origin _website
-          git switch main
 
       - name: 🔄 Sync built site to _website branch
         run: |
