@@ -7,10 +7,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  jekyll:
+  build:
     runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.cache-key.outputs.key }}
     steps:
-      - name: 📂 Setup
+      - name: 📂 Checkout main branch
         uses: actions/checkout@v3
 
       - name: 💎 Setup Ruby
@@ -23,32 +25,30 @@ jobs:
         with:
           enable_cache: true
 
-      - name: 🔄 Check for _website branch
-        id: check-branch
-        run: |
-          if git ls-remote --heads origin _website; then
-            echo "::set-output name=exists::true"
-          else
-            echo "::set-output name=exists::false"
-          fi
+      - name: 📦 Generate cache key
+        id: cache-key
+        run: echo "::set-output name=key::${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}"
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: 📂 Checkout _website branch
-        if: steps.check-branch.outputs.exists == 'true'
         uses: actions/checkout@v3
         with:
           ref: _website
           token: ${{ secrets.GITHUB_TOKEN }}
           path: _website
+        continue-on-error: true
 
-      - name: 📂 Create and checkout _website branch
-        if: steps.check-branch.outputs.exists == 'false'
+      - name: 🔄 Create _website branch if not exists
+        if: steps.checkout.outputs.ref != '_website'
         run: |
-          git checkout --orphan _website
+          git switch --orphan _website
           git reset --hard
           git commit --allow-empty -m "Initial _website branch commit"
           git push origin _website
-          git checkout main
-          git worktree add _website _website
+          git switch main
 
       - name: 🔄 Sync built site to _website branch
         run: |
