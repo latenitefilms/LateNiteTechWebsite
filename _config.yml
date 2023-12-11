@@ -1,7 +1,7 @@
 # Site settings
 title: LateNite
 tagline: "LateNite is an independent production studio committed to investing in emerging creatives with strong, unique voices, helping tell their stories in a creatively supportive and collaborative environment. Our work uses humour to explore outsider stories that are unmistakably human and straddle the line between light and dark."
-url: "https://latenitefilms.com" # The base hostname & protocol for your site. Use it if you need absolute URL's
+url: "https://latenite.tech" # The base hostname & protocol for your site. Use it if you need absolute URL's
 
 # Social
 #socialimg: img/og/social.png # be sure to change this image
@@ -9,7 +9,7 @@ url: "https://latenitefilms.com" # The base hostname & protocol for your site. U
 #twitter: latenitefilms
 
 # Contact
-email: "producers@latenitefilms.com" 
+email: "producers@latenitefilms.com"
 permalink: /:categories/:title/
 
 # Use this for production
@@ -21,31 +21,4 @@ exclude: [vendor]
 future: true
 
 collections:
-  originals:
-    output: true
-    order:
-      - the-future-of-everything.md
-      - the-legend-of-burnout-barry.md
-      - rebooted.md
-      - goblin-spoon.md
-      - the-wizards-of-aus.md
-  collaborations:
-    output: true
-    order:
-      - lambs-of-god.md 
-      - the-slot.md 
-      - erinsborough-high.md 
-      - nekrotronic.md 
-      - guy-pearce-storm.md 
-      - gang-of-youths-the-deepest-sighs-the-frankest-shadows.md 
-      - peking-duk-let-you-down.md 
-      - american-doubles-the-swell.md 
-      - vera-blue-like-i-remember-you.md
-      - rufus-du-sol-be-with-you.md 
-      - guy-pearce-what-makes-you-think.md 
-      - cosmos-midnight-mind-off.md 
-      - dappled-cities-stone-men.md 
-      - crooked-colours-flow.md 
-      - guy-pearce-broken-bones.md 
-      - casey-donovan-the-villain.md 
   technology:
