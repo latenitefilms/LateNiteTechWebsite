@@ -48,6 +48,11 @@ jobs:
         with:
           ref: main
 
+      - name: Setup Git Identity
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+
       - name: Create Website Branch
         run: |
           git checkout --orphan website
@@ -68,8 +73,6 @@ jobs:
 
       - name: Commit and Push to Website Branch
         run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
           git add .
           git commit -m "Deploy Jekyll site"
           git push origin HEAD:website
