@@ -1,57 +1,54 @@
-name: Deploy Jekyll to website Branch
+# Sample workflow for building a Jekyll site and pushing to a separate branch
+name: Deploy Jekyll site to 'website' branch
 
 on:
   push:
-    branches: [main]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "website-deploy"
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      # Checkout the main branch
+      - name: Checkout main branch
         uses: actions/checkout@v4
+        with:
+          ref: 'main'
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      # Setup Ruby environment
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+          cache-version: 0
 
+      # Build Jekyll site
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
+        run: |
+          bundle exec jekyll build --baseurl ""
+        env:
+          JEKYLL_ENV: production
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: site
-          path: ./_site
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: site
-
-      - name: Deploy to website Branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          publish_branch: website
-          keep_files: false
+      # Checkout the website branch and copy files
+      - name: Checkout website branch and deploy
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git fetch
+          git checkout -b website origin/website || git checkout -b website
+          rsync -av --exclude='.git/' --exclude='*.md' _site/ .
+          git add .
+          git commit -m "Deploy website updates"
+          git push origin website
