@@ -49,9 +49,9 @@ jobs:
           name: site
 
       - name: Deploy to website Branch
-        uses: actions/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          publish_branch: website
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          destination_branch: website
           keep_files: false
