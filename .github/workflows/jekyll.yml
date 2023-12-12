@@ -43,11 +43,22 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Checkout Main Branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Create Website Branch
+        run: |
+          git checkout --orphan website
+          git reset --hard
+          git commit --allow-empty -m "Initial commit on website branch"
+          git push origin website
+
       - name: Checkout Website Branch
         uses: actions/checkout@v4
         with:
           ref: website
-          fetch-depth: 0
 
       - name: Download artifact
         uses: actions/download-artifact@v2
