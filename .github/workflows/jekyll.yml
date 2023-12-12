@@ -47,6 +47,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+          token: ${{ secrets.MY_PAT }}
 
       - name: Setup Git Identity
         run: |
@@ -64,6 +65,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: website
+          token: ${{ secrets.MY_PAT }}
 
       - name: Download artifact
         uses: actions/download-artifact@v2
