@@ -1,5 +1,4 @@
-# Sample workflow for building a Jekyll site and deploying to a custom branch
-name: Deploy Jekyll to Custom Branch
+name: Deploy Jekyll to website Branch
 
 on:
   push:
@@ -49,10 +48,10 @@ jobs:
         with:
           name: site
 
-      - name: Deploy to Custom Branch
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy to website Branch
+        uses: actions/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+          publish_dir: ./
           publish_branch: website
           keep_files: false
