@@ -51,7 +51,7 @@ jobs:
       - name: Deploy to website Branch
         uses: peaceiris/actions-gh-pages@v3
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+          deploy_key: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
           publish_branch: website
           keep_files: false
